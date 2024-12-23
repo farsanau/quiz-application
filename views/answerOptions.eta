@@ -1,0 +1,64 @@
+<head>
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Application</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+<body class="container mt-4">
+  <!-- Question Title -->
+  <h2 class="mb-4 text-center"><%= it.question.question_text %></h2>
+
+  <!-- No Answer Options Message -->
+  <% if (it.answerOptions.length === 0) { %>
+    <div class="alert alert-warning text-center">
+      No answer options available for this question.
+    </div>
+    <form action="/topics/<%=it.topicId %>/questions/<%=it.questionId%>/delete" method="POST" class="text-center">
+      <button type="submit" class="btn btn-danger">Delete Question</button>
+    </form>
+  <% } else { %>
+    <!-- Answer Options List -->
+    <ul class="list-group mb-4">
+      <% it.answerOptions.forEach((option) => { %>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <span><%= option.option_text %> (Correct: <strong><%= option.is_correct ? "Yes" : "No" %></strong>)</span>
+          <form action="/topics/<%= it.topicId %>/questions/<%= it.questionId %>/options/<%= option.id %>/delete" method="POST">
+            <button type="submit" class="btn btn-danger btn-sm">Delete option</button>
+          </form>
+        </li>
+      <% }) %>
+    </ul>
+  <% } %>
+
+  <!-- Error Messages -->
+  <% if (it.errors.length > 0) { %>
+    <div class="alert alert-danger">
+      <ul class="mb-0">
+        <% it.errors.forEach(error => { %>
+          <li><%= error %></li>
+        <% }) %>
+      </ul>
+    </div>
+  <% } %>
+
+  <!-- Add Answer Option Form -->
+  <form action="/topics/<%= it.topicId %>/questions/<%= it.questionId %>/options" method="POST" class="card p-4">
+    <h4 class="mb-3">Add Answer Options:</h4>
+
+    <!-- Option Text Field -->
+    <div class="mb-3">
+      <label for="option_text" class="form-label">Option Text:</label>
+      <input type="text" class="form-control" name="option_text" id="option_text" value="<%= it.formData.option_text %>" required>
+    </div>
+
+    <!-- Correct Answer Checkbox -->
+    <div class="mb-3 form-check">
+      <input type="checkbox" class="form-check-input" name="is_correct" id="is_correct" <%= it.formData.is_correct ? "checked" : "" %>>
+      <label for="is_correct" class="form-check-label">Is Correct</label>
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-primary">Add Option</button>
+  </form>
+</body>

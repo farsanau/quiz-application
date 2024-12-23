@@ -1,0 +1,32 @@
+<head>
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Application</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+<body class="container">
+<h1>Login!</h1>
+<div class="row mb-3">
+<form method="POST" action="/auth/login">
+  <% if (it.error) { %>
+    <p style="color: red;"><%= it.error %></p>
+  <% } %>
+
+  <!-- Wrap the form in a Bootstrap border, padding, and shadow container -->
+  <div class="border rounded p-4 shadow-sm">
+    <div class="mb-3">
+      <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+      <input class="form-control" type="email" name="email" value="<%= it.email || '' %>" placeholder="Enter your email"/>
+    </div>
+
+    <div class="mb-3">
+      <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+      <input class="form-control" type="password" name="password" placeholder="Enter your password"/>
+    </div>
+
+    <div class="text-center">
+      <input class="btn btn-success" type="submit" value="Login"/>
+    </div>
+  </div>
+</form>
