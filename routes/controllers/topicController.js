@@ -41,7 +41,7 @@ const addTopic = async ({ request, response, render, state }) => {
 
     const existingTopic = await mainTopics.getTopicByName(name);
 
-    if (existingTopic) {
+    if (existingTopic.length > 0) {
         errors.push("Topic already exists!");
         const data = {
             topics: await mainTopics.getTopics(),
