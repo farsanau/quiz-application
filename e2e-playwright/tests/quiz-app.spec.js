@@ -39,10 +39,11 @@ test("Admin creates a new topic", async ({ page }) => {
     await page.goto("http://localhost:7777/topics");
     await page.fill('input[name="name"]', "New Topic");
     await page.click('button:has-text("Add Topic")');
-    await expect(page.locator("a")).toHaveText(
+    await expect(page.locator('a:has-text("New Topic")')).toHaveText(
         "New Topic",
     );
 });
+
 
 // test("Topic page lists all questions", async ({ page }) => {
 //     await page.goto("http://localhost:7777/topics/1");
