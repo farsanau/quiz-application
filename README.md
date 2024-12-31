@@ -6,14 +6,30 @@ A web-based quiz application where users can create and attempt quizzes based on
 topics. Admins can create, update, and delete topics, while regular users can
 log in, view topics, and attempt quizzes.
 
+## Live Application
+You can access the live version of the application here: `https://quiz-application-diiv.onrender.com``
+
+
+
 ## Features
 
-Admin functionalities: Admin can create new topics. Admin can delete existing
-topics. Admin can manage questions under each topic. User functionalities: Users
-can log in. Users can view available topics. Users can take quizzes related to
-each topic. Question creation: Admin can add questions to topics. Responsive UI:
-The application is built to work well on different devices (desktop, tablet,
-mobile).
+# Admin functionalities:
+Admin can create new topics.
+Admin can delete existing topics.
+Admin can make questions for quiz.
+Admin can manage questions under each topic.
+
+# User functionalities:
+Users can log in.
+Users can view available topics.
+User can make questions for quiz.
+Users can take quizzes related to each topic.
+
+# Question creation:
+Admin can add topics.
+
+# Responsive UI:
+The application is built to work well on different devices (desktop, tablet, mobile).
 
 ## Prerequisites
 
