@@ -95,7 +95,7 @@ This opens up `psql` console, where you can write SQL commands
 Once the app is running, open your browser and navigate to
 `http://localhost:7777`.
 
-## Usage
+
 
 # Login:
 
