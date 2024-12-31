@@ -7,7 +7,7 @@ topics. Admins can create, update, and delete topics, while regular users can
 log in, view topics, and attempt quizzes.
 
 ## Live Application
-You can access the live version of the application here: `https://quiz-application-diiv.onrender.com``
+You can access the live version of the application here: `https://quiz-application-diiv.onrender.com`
 
 
 
