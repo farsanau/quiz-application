@@ -20,6 +20,17 @@ test("Login form displays correctly", async ({ page }) => {
     await expect(page.locator('input[type="submit"]')).toHaveValue("Login");
 });
 
+test("User can register with valid details", async ({ page }) => {
+    await page.goto("http://localhost:7777/auth/register");
+    await page.fill('input[name="email"]', "testuser@test.com");
+    await page.fill('input[name="password"]', "test1234");
+    await page.fill('input[name="verification"]', "test1234");
+    await page.click('button:has-text("Register")');
+
+    // Assuming successful registration redirects to login page
+    await expect(page).toHaveURL("http://localhost:7777/auth/login");
+});
+
 test("Admin can log in with correct credentials", async ({ page }) => {
     await page.goto("http://localhost:7777/auth/login");
     await page.fill('input[name="email"]', "admin@admin.com");
@@ -44,9 +55,17 @@ test("Admin creates a new topic", async ({ page }) => {
     );
 });
 
+test("Topics page shows no topics when none exist", async ({ page }) => {
+    await page.goto("http://localhost:7777/quiz");
 
-// test("Topic page lists all questions", async ({ page }) => {
-//     await page.goto("http://localhost:7777/topics/1");
-//     await expect(page.locator("h2")).toHaveText("Questions");
-//     await expect(page.locator("ul li")).toBeVisible(); // Assuming there's at least one question
-// });
+    // Assuming the page shows an alert or text when no topics are available
+    await expect(page.locator("div.alert")).toHaveText(
+        "No topics available for quiz.",
+    );
+});
+
+test("Topic page lists all questions", async ({ page }) => {
+    await page.goto("http://localhost:7777/topics/1");
+    await expect(page.locator("h1")).toHaveText("Questions for Topic: ");
+    await expect(page.locator("ul li")).toBeVisible(); // Assuming there's at least one question
+});

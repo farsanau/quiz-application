@@ -25,4 +25,8 @@
       No topics available for quiz.
     </div>
   <% } %>
+
+   <div class="text-center mt-4">
+    <a href="/" class="btn btn-secondary">Main page</a>
+  </div>
 </body>
